@@ -3,6 +3,10 @@
 -- Created: Éamonn A. Duffy, 17-Apr-2019 (Wih the assistance of SSMS initially).
 --
 --------------------------------------------------------------------------------
+--
+-- TODO: Determine the N (where N = 7?) Directives to use from the SQL Skills Course.
+--
+--------------------------------------------------------------------------------
 
 USE [master]
 GO
