@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --
--- Created: Éamonn A. Duffy, 17-Apr-2019 (Wih the assistance of SSMS initially).
+-- Created: Éamonn A. Duffy, 17-Apr-2019 (With the assistance of SSMS initially).
 --
 --------------------------------------------------------------------------------
 --
@@ -8,117 +8,172 @@
 --
 --------------------------------------------------------------------------------
 
+:SETVAR	DatabaseNameCss				"Css.V003"
+
+:SETVAR DatabaseFolderNameData		"C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\"
+:SETVAR	DatabaseFolderNameLog		"C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\"
+
 USE [master]
 GO
 
-/****** Object:  Database [Css.V000]    Script Date: 17/04/2019 07:24:44 ******/
-CREATE DATABASE [Css.V000]
+CREATE DATABASE [$(DatabaseNameCss)]
  CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Css.V000', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\Css.V000.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ ON  PRIMARY  
+( NAME = N'$(DatabaseNameCss)', FILENAME = N'$(DatabaseFolderNameData)$(DatabaseNameCss).mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'Css.V000_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\Css.V000_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'$(DatabaseNameCss)_log', FILENAME = N'$(DatabaseFolderNameLog)$(DatabaseNameCss)_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 GO
 
-ALTER DATABASE [Css.V000] SET COMPATIBILITY_LEVEL = 140
+ALTER DATABASE [$(DatabaseNameCss)] SET COMPATIBILITY_LEVEL = 140
 GO
 
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
-EXEC [Css.V000].[dbo].[sp_fulltext_database] @action = 'enable'
+EXEC [$(DatabaseNameCss)].[dbo].[sp_fulltext_database] @action = 'enable'
 end
 GO
 
-ALTER DATABASE [Css.V000] SET ANSI_NULL_DEFAULT OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET ANSI_NULL_DEFAULT OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET ANSI_NULLS OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET ANSI_NULLS OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET ANSI_PADDING OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET ANSI_PADDING OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET ANSI_WARNINGS OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET ANSI_WARNINGS OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET ARITHABORT OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET ARITHABORT OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET AUTO_CLOSE OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET AUTO_CLOSE OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET AUTO_SHRINK OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET AUTO_SHRINK OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET AUTO_UPDATE_STATISTICS ON 
+ALTER DATABASE [$(DatabaseNameCss)] SET AUTO_UPDATE_STATISTICS ON 
 GO
 
-ALTER DATABASE [Css.V000] SET CURSOR_CLOSE_ON_COMMIT OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET CURSOR_CLOSE_ON_COMMIT OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET CURSOR_DEFAULT  GLOBAL 
+ALTER DATABASE [$(DatabaseNameCss)] SET CURSOR_DEFAULT  GLOBAL 
 GO
 
-ALTER DATABASE [Css.V000] SET CONCAT_NULL_YIELDS_NULL OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET CONCAT_NULL_YIELDS_NULL OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET NUMERIC_ROUNDABORT OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET NUMERIC_ROUNDABORT OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET QUOTED_IDENTIFIER OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET QUOTED_IDENTIFIER OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET RECURSIVE_TRIGGERS OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET RECURSIVE_TRIGGERS OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET  DISABLE_BROKER 
+ALTER DATABASE [$(DatabaseNameCss)] SET  DISABLE_BROKER 
 GO
 
-ALTER DATABASE [Css.V000] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET DATE_CORRELATION_OPTIMIZATION OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET DATE_CORRELATION_OPTIMIZATION OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET TRUSTWORTHY OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET TRUSTWORTHY OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET ALLOW_SNAPSHOT_ISOLATION OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET PARAMETERIZATION SIMPLE 
+ALTER DATABASE [$(DatabaseNameCss)] SET PARAMETERIZATION SIMPLE 
 GO
 
-ALTER DATABASE [Css.V000] SET READ_COMMITTED_SNAPSHOT OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET READ_COMMITTED_SNAPSHOT OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET HONOR_BROKER_PRIORITY OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET HONOR_BROKER_PRIORITY OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET RECOVERY FULL 
+ALTER DATABASE [$(DatabaseNameCss)] SET RECOVERY FULL 
 GO
 
-ALTER DATABASE [Css.V000] SET  MULTI_USER 
+ALTER DATABASE [$(DatabaseNameCss)] SET  MULTI_USER 
 GO
 
-ALTER DATABASE [Css.V000] SET PAGE_VERIFY CHECKSUM  
+ALTER DATABASE [$(DatabaseNameCss)] SET PAGE_VERIFY CHECKSUM  
 GO
 
-ALTER DATABASE [Css.V000] SET DB_CHAINING OFF 
+ALTER DATABASE [$(DatabaseNameCss)] SET DB_CHAINING OFF 
 GO
 
-ALTER DATABASE [Css.V000] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+ALTER DATABASE [$(DatabaseNameCss)] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
 GO
 
-ALTER DATABASE [Css.V000] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+ALTER DATABASE [$(DatabaseNameCss)] SET TARGET_RECOVERY_TIME = 60 SECONDS 
 GO
 
-ALTER DATABASE [Css.V000] SET DELAYED_DURABILITY = DISABLED 
+ALTER DATABASE [$(DatabaseNameCss)] SET DELAYED_DURABILITY = DISABLED 
 GO
 
-ALTER DATABASE [Css.V000] SET QUERY_STORE = OFF
+ALTER DATABASE [$(DatabaseNameCss)] SET QUERY_STORE = OFF
 GO
 
-ALTER DATABASE [Css.V000] SET  READ_WRITE 
+ALTER DATABASE [$(DatabaseNameCss)] SET  READ_WRITE 
 GO
 
+--------------------------------------------------------------------------------
+-- Begin using the New Database.
+--------------------------------------------------------------------------------
+
+USE [$(DatabaseNameCss)]
+GO
+
+--------------------------------------------------------------------------------
+-- Create Schema if/as appropriate.
+--------------------------------------------------------------------------------
+
+IF SCHEMA_ID(N'Dad') IS NULL
+BEGIN
+	EXECUTE(N'CREATE SCHEMA Dad;');
+END
+GO
+
+--------------------------------------------------------------------------------
+-- Create Tables if/as appropriate.
+--------------------------------------------------------------------------------
+-- TODO: Investigate further the potential requirement for ON PRIMARY.
+--------------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS Dad.DatabaseVersion; 
+GO
+
+CREATE TABLE Dad.DatabaseVersion
+(
+    DatabaseVersionId           Integer CONSTRAINT PK_DatabaseVersion PRIMARY KEY IDENTITY(0, 1) NOT NULL,
+    Major                       Integer NOT NULL,
+    Minor                       Integer NOT NULL,
+    Build                       Integer NOT NULL,
+    ServicePack                 Integer NOT NULL, 
+    Description                 NVarChar(128) NOT NULL,
+    CreatedDateTimeUtc          DateTime2(7) NOT NULL
+);
+GO
+
+--------------------------------------------------------------------------------
+
+INSERT INTO Dad.DatabaseVersion
+    (Major, Minor, Build, ServicePack, Description, CreatedDateTimeUtc)
+VALUES
+    (0, 0, 0, 0, N'V0.0', GetUtcDate());
+GO
+
+--------------------------------------------------------------------------------
+-- Scratch Pad area to try out SQL.
+--------------------------------------------------------------------------------
+
+ 
